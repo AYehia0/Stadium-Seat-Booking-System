@@ -35,11 +35,48 @@ public class InitAll {
 					case 3:
 						getInfo();
 						break;
+						
+					//adding matches
 					case 4:
+						if (isAdmin()) {
+							addMatches();
+						}
+						break;
+					
+					//editing matches
+					case 5:
+						if (isAdmin()) {
+							editMatches();
+						}
+						break;
+					//delete matches 
+					case 6:
+						if (isAdmin()) {
+							delMatches();
+						}
+						break;
+						
+					case 7:
+						if (isAdmin()) {
+							editCustomers();
+						}
+						break;
+					case 8:
+						if (isAdmin()) {
+							showCustomers();
+						}
+						break;
+						
+					case 9:
+						if (isAdmin()) {
+							showSeatsToCustomers();
+						}
+						break;
+					case 10:
 						flag = 1;
 						System.out.println("Thanks for using that shit :3 ");
 						break;
-						
+
 					default:
 						System.out.println("Invalid, returning...");
 						
@@ -64,10 +101,19 @@ public class InitAll {
 		//System.out.println("2) Sing up");
 		System.out.println("2) Book a seat ");
 		System.out.println("3) Your info(Registeration, Seat Location, Match date) ");
-		System.out.println("4) Exit ");
+		//System.out.println("-------------------------------------------"); 
+		System.out.println("-------------------ADMIN-------------------"); 
+		//System.out.println("-------------------------------------------"); 
+		System.out.println("4) Add Matches");
+		System.out.println("5) Edit Matches");
+		System.out.println("6) Delete Matches");
+		System.out.println("7) Edit Customer"); 
+		System.out.println("8) Show All Customers"); 
+		System.out.println("9) Show All Seats To Customers"); 
 		System.out.println("-------------------------------------------"); 
-		
-	}
+		System.out.println("10) Exit ");
+		System.out.println("-------------------------------------------"); 
+}
 	
 	public static void checkMatches() throws SQLException {
 		//Match m = new Match();

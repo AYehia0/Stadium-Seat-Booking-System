@@ -205,6 +205,14 @@ public class InitAll {
 		Match.delMatch(m_id);
 		
 	}
+	public static void showCustomers() throws SQLException {
+		System.out.println("--------------SHOW CUSTOMERS---------------");
+		System.out.println("-------------------------------------------");
+
+		CustomerMatch.getAllCustomer();
+		
+	}
+	
 	public static void getInfo() throws SQLException {
 		Scanner sc = new Scanner(System.in);
 		

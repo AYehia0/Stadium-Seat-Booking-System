@@ -23,10 +23,5 @@ public class Main {
 		InitAll init = new InitAll();
 		InitAll.welcome();
 		
-		//c.closeConnection();
-		//Customer cd = new Customer("test", "test", "test", "test", 1);
-		//System.out.println(cd.addCustomer());
-
-		
 	}
 }

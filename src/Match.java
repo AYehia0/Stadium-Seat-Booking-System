@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Match {
 	private String matchTitle;
@@ -53,39 +55,49 @@ public class Match {
 		//getting connection
 		Connection conn = ConnectDataBase.getConn();
 		Statement stat = ConnectDataBase.getStat();
-		try { 
+		CoolTables tableGenerator = new CoolTables();
+		
+		List<String> headersList = new ArrayList<>(); 
+        headersList.add("MatchID");
+        headersList.add("MatchTitle");
+        headersList.add("MatchDate");
+        headersList.add("FirstTeam");
+        headersList.add("SecondTeam");
+        
+        List<List<String>> rowsList = new ArrayList<>();
+		
+        try { 
 			
     		stat = conn.createStatement();
     		ResultSet qset = stat.executeQuery("SELECT * FROM Match");
     		
-    		//printing the table, has a next ? yes print all
     		while(qset.next()) {
-    			
-    			//getting the info from the table
-        		int id = qset.getInt("matchId");
-        		String t = qset.getString("matchTitle");
-        		String d = qset.getString("matchDate");
-        		String f = qset.getString("firstTeam");
-        		String s = qset.getString("secondTeam");
+    
+        		List<String> row = new ArrayList<>(); 
+    		    
+        		row.add(String.valueOf(qset.getInt("matchId")));
+        		row.add(qset.getString("matchTitle"));
+        		row.add(qset.getString("matchDate"));
+        		row.add(qset.getString("firstTeam"));
+        		row.add(qset.getString("secondTeam"));
         		
-	    		System.out.println(id +"   "+ t +"   "+ d + "   " + f + "   " + s);
-    		}
+        		//adding to the rowList
+        		rowsList.add(row);
+        	}
     	}catch(Exception e){
     		 System.out.println("An error happened while connecting to the db " + e.getMessage());
     	}
+        System.out.println(tableGenerator.generateTable(headersList, rowsList));
     }
-	public void delMatch(int match_id) throws SQLException {
+	public static void delMatch(int match_id) throws SQLException {
 		Connection conn = ConnectDataBase.getConn();
 		conn.setAutoCommit(false);
 		try {
 			PreparedStatement prep = conn.prepareStatement("DELETE FROM Match WHERE matchId=?");
 			prep.setInt(1, match_id);
 			prep.executeUpdate();
-			
-			
+		
 			conn.commit();
-			
-
 			conn.close();
 			
 			System.out.println("Record has been deleted");
@@ -94,7 +106,7 @@ public class Match {
 			System.out.println("Error Couldn't delete");
 		}
 	}
-	public void editMatch(int m_id ,String m_title, String m_date, String f_team, String s_team ) throws SQLException {
+	public static void editMatch(int m_id ,String m_title, String m_date, String f_team, String s_team ) throws SQLException {
 		// " UPDATE Match 
 		//SET matchTitle='final match', matchDate='1/3/2010'
 		//		 WHERE matchId=2;"
@@ -110,11 +122,8 @@ public class Match {
 			prep.setInt(5, m_id);
 
 			prep.executeUpdate();
-			
-			
+		
 			conn.commit();
-			
-
 			conn.close();
 			
 			System.out.println("Record has been edited");

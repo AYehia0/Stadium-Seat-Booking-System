@@ -14,6 +14,9 @@ public class Customer {
 	private String customer_address;
 	private int num_seats;
 	
+	
+	public Customer() {}
+	
 	public Customer(String fname, String lname, String phone, String address, int s_num) {
 		this.customer_fname = fname;
 		this.customer_lname = lname;
@@ -21,6 +24,7 @@ public class Customer {
 		this.customer_address = address;
 		this.num_seats = s_num;
 	}
+	
 	
 	public void updateCustomer(String fname, String lname, String phone, String address, int s_num) {
 		this.customer_fname = fname;
@@ -47,7 +51,6 @@ public class Customer {
 			
 			//executing
 			prep.executeUpdate();
-			
 			
 			conn.commit();
 			
@@ -96,9 +99,5 @@ public class Customer {
 		
 	}
 	//deleting the customer
-	
-	
 
-
-	
 }

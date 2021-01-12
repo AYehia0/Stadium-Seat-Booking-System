@@ -5,11 +5,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Seat {
 	//idk i have reserved a ticket for a match my life lol
 	public String[] seat_type = {"VIP", "SecondTier", "ThirdTier", "Budget"};
+	
+	//hard coding values isn't a good practice at all
 	public int[] seat_prices = {400, 300, 200, 100};
 	private String[] seat_position = {"front", "middle", "rear"};
 	//private int max_seats = 10;
@@ -23,24 +27,38 @@ public class Seat {
 		//getting connection
 		Connection conn = ConnectDataBase.getConn();
 		Statement stat = ConnectDataBase.getStat();
+		
+		CoolTables tableGenerator = new CoolTables();
+		
+		List<String> headersList = new ArrayList<>(); 
+        headersList.add("seatNumber");
+        headersList.add("type");
+        headersList.add("position");
+		
+        List<List<String>> rowsList = new ArrayList<>();
+
 		try { 
 			
     		stat = conn.createStatement();
     		ResultSet qset = stat.executeQuery("SELECT * FROM Seat");
     		
-    		//printing the table, has a next ? yes print all
     		while(qset.next()) {
-    			
-    			//getting the info from the table
-        		int s_id = qset.getInt("seatNumber");
-        		String t = qset.getString("type");
-        		String p = qset.getString("position");
+    
+        		List<String> row = new ArrayList<>(); 
+    		    
+        		row.add(String.valueOf(qset.getInt("seatNumber")));
+        		row.add(qset.getString("type"));
+        		row.add(qset.getString("position"));
         		
-	    		System.out.println(s_id +"   "+ t +"   "+ p + "   ");
+        		//adding to the rowList
+        		rowsList.add(row);
+        		
     		}
     	}catch(Exception e){
     		 System.out.println("An error happened while connecting to the db " + e.getMessage());
     	}
+	System.out.println(tableGenerator.generateTable(headersList, rowsList));
+
 	}
 	
 
@@ -125,11 +143,29 @@ public class Seat {
 		return p;
 	}
 	public void seatInfo() throws SQLException {
-		System.out.println("The Id for the seat is : " + this.seat_id);
-		System.out.println("The Type of the seat is : " + getSeatType(this.seat_id));
-		System.out.println("The price for the seat is : " + getPrice(this.choosenType));
-		System.out.println("The location of the seat is : " + this.seat_location);
 		
+		CoolTables tableGenerator = new CoolTables();
+		
+		List<String> headersList = new ArrayList<>(); 
+        headersList.add("seatID");
+        headersList.add("type");
+        headersList.add("position");
+        headersList.add("price");
+		
+        List<List<String>> rowsList = new ArrayList<>();
+        List<String> row = new ArrayList<>(); 
+	    
+		row.add(String.valueOf(this.seat_id));
+		row.add(getSeatType(this.seat_id));
+		row.add(this.seat_location);
+		row.add(String.valueOf(getPrice(this.choosenType)));
+		
+		//adding to the rowList
+		rowsList.add(row);
+	
+		//printing the table
+		System.out.println(tableGenerator.generateTable(headersList, rowsList));
+
 		
 	}
 

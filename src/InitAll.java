@@ -10,7 +10,9 @@ public class InitAll {
 
 	static int userId = 0;
 	static int seats = 0;
-	
+	//public static String username = "yeahboi";
+	public static String password = "letmein";
+
 	public static void welcome() throws SQLException, InterruptedException{
 		Scanner sc = new Scanner(System.in);
 		int flag = 0;

@@ -29,11 +29,11 @@ taking place in a particular stadium.
 # To Run and Compile on Linux
   ## To Compile :
 
-	```$ javac -cp ".:./externel/sqlite-jdbc-3.5.8.jar" src/* -d .```
+	$ javac -cp ".:./externel/sqlite-jdbc-3.5.8.jar" src/* -d .
 
   ## To Run (run the main class only):
 
-	```$ java -cp ".:./externel/sqlite-jdbc-3.5.8.jar" stadium.Main```
+	$ java -cp ".:./externel/sqlite-jdbc-3.5.8.jar" stadium.Main
 
 
 

@@ -119,6 +119,56 @@ public class InitAll {
 		//Match m = new Match();
 		Match.getOnMatches();
 	}
+
+	public static boolean isAdmin() {
+		Scanner sc = new Scanner(System.in);
+
+		//auth
+		System.out.print("Please Enter the Password: ");
+		String pass = sc.nextLine();
+		
+		System.out.println("-------------------------------------------");
+		//again not the best auth thing, and bad thing to do ,,, but for the sake of simplicity i will do it like that
+		if(!pass.equals(password)) {
+			System.out.println("No Access");
+			return false;
+		}
+		
+		return true;
+		
+	}
+
+	public static void showSeatsToCustomers() throws SQLException {
+		System.out.println("----------------SHOW SEATS-----------------");
+		System.out.println("-------------------------------------------");
+
+		CustomerMatch.getAllSeatsCustomer();
+	}
+	
+	public static void addMatches() throws SQLException {
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("-------------------------------------------");
+		System.out.print("Please Enter MatchTitle: ");
+		String title = sc.nextLine();
+		
+		System.out.print("Please Enter Date Of The Match: ");
+		String date = sc.nextLine();
+		
+		System.out.print("Please Enter Time For The Stadium Hosting The Match: ");
+		String time = sc.nextLine();
+
+		System.out.print("Please Enter The First Team: ");
+		String fteam = sc.nextLine();
+		
+		System.out.print("Please Enter Second Team: ");
+		String steam = sc.nextLine();
+		
+		Match m = new Match();
+		m.setMatchInfo(title, date, time, fteam, steam);
+		m.addMatchToDB();
+	}
+
 	public static void getInfo() throws SQLException {
 		Scanner sc = new Scanner(System.in);
 		

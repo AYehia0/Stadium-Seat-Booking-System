@@ -28,3 +28,11 @@ hs_err_pid*
 
 # End of https://www.toptal.com/developers/gitignore/api/java
 stadium/*
+stadium/CustomerMatch.class
+stadium/Customer.class
+stadium/ConnectDataBase.class   
+stadium/Match.class
+stadium/CoolTables.class       
+stadium/InitAll.class        
+stadium/Seat.class        
+stadium/Main.class

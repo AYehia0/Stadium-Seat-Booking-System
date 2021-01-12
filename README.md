@@ -21,7 +21,9 @@ taking place in a particular stadium.
 # Skills before starting
 
 ⋅⋅* [Software Design - Implementing Our Design](https://www.youtube.com/watch?v=6thjSbJcoUc)
+
 ⋅⋅* [Database Design Course - Learn how to design and plan a database for beginners](https://www.youtube.com/watch?v=ztHopE5Wnpc)
+
 ⋅⋅* [SQL Tutorial - Full Database Course for Beginners](https://www.youtube.com/watch?v=HXV3zeQKqGY)
 
 # To Run and Compile on Linux
@@ -35,7 +37,8 @@ taking place in a particular stadium.
 
 
 
-# ToDo ###### (probably won't do, busy)
+# ToDo 
+###### (probably won't do, busy)
 
 - [ ] Create a table for seat types.
 - [ ] Add Prices to the database.

@@ -8,7 +8,7 @@ import java.sql.Statement;
 public class ConnectDataBase {
 	//important shit 
 	//String pathToDB = "jdbc:sqlite:/home/none/jp/file.sqli";
-	static String pathToDB = "jdbc:sqlite:/home/none/jp/bin/file.sqli";
+	static String pathToDB = "jdbc:sqlite:db.sqlite";
 	static Connection conn = null;
     static Statement stat = null;
     

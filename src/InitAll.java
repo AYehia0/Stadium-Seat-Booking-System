@@ -212,7 +212,35 @@ public class InitAll {
 		CustomerMatch.getAllCustomer();
 		
 	}
-	
+	public static void editCustomers() throws SQLException {
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("---------------EDIT CUSTOMER---------------");
+		System.out.println("-------------------------------------------");
+
+		System.out.print("Please Enter Customer ID: ");
+		int c_id = sc.nextInt();
+		
+		sc.nextLine();
+		
+		System.out.print("Please Enter FirstName: ");
+		String fname = sc.nextLine();
+		
+		System.out.print("Please Enter LastName: ");
+		String lname = sc.nextLine();
+		
+		System.out.print("Please Enter PhoneNumber: ");
+		String phone = sc.nextLine();
+
+		System.out.print("Please Enter Address: ");
+		String address = sc.nextLine();
+		
+		System.out.print("Please Enter NumberOfSeats: ");
+		int s_num = sc.nextInt();
+		
+		Customer k = new Customer();
+		k.editCustomer(c_id, fname, lname, phone, address, s_num);
+	}
 	public static void getInfo() throws SQLException {
 		Scanner sc = new Scanner(System.in);
 		

@@ -1,0 +1,182 @@
+
+package stadium;
+
+import java.sql.SQLException;
+import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
+
+
+public class InitAll {
+
+	static int userId = 0;
+	static int seats = 0;
+	
+	public static void welcome() throws SQLException, InterruptedException{
+		Scanner sc = new Scanner(System.in);
+		int flag = 0;
+		int choice = 0;
+		
+		while(true && flag != 1) {
+			
+			while(true) {
+				show();
+				//getting choice 
+				choice = sc.nextInt();
+				sc.nextLine();
+				
+				
+				switch(choice) {
+					case 1:
+						checkMatches();
+						break;
+					case 2:
+						bookSeat();
+						break;
+					case 3:
+						getInfo();
+						break;
+					case 4:
+						flag = 1;
+						System.out.println("Thanks for using that shit :3 ");
+						break;
+						
+					default:
+						System.out.println("Invalid, returning...");
+						
+					
+				}
+				if(flag == 1) {
+					break;
+				}
+			}
+			
+		}
+		
+	}
+	
+	public static void show() {
+		System.out.println("-------------------------------------------");
+		System.out.println("Welcome to this simple seat booking app");
+		System.out.println("-------------------------------------------");
+		System.out.println("Please choose something: ");
+		System.out.println("-------------------------------------------");
+		System.out.println("1) Check available matches ");
+		//System.out.println("2) Sing up");
+		System.out.println("2) Book a seat ");
+		System.out.println("3) Your info(Registeration, Seat Location, Match date) ");
+		System.out.println("4) Exit ");
+		System.out.println("-------------------------------------------"); 
+		
+	}
+	
+	public static void checkMatches() throws SQLException {
+		//Match m = new Match();
+		Match.getOnMatches();
+	}
+	public static void getInfo() throws SQLException {
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("-------------------------------------------");
+		System.out.println("Please Enter your id: ");
+		int user_id = sc.nextInt();
+		
+		sc.nextLine();
+		
+		//reg validation
+		if (user_id != userId) {
+			System.out.println("No Access");
+			return;
+		}
+		
+		System.out.println("-------------------------------------------");
+		System.out.println("Match Information: ");
+		System.out.println("-------------------------------------------");
+
+		CustomerMatch.getMatchesCustomer(user_id);
+		
+		System.out.println("-------------------------------------------");
+		System.out.println("Customer Information: ");
+		
+		CustomerMatch.getCustomer(user_id);
+		
+		System.out.println("-------------------------------------------");
+		System.out.println("Seats Information("+seats+" seats):");
+		System.out.println("-------------------------------------------");
+
+		//shows user's seats collection, type and location
+		CustomerMatch.getSeatsCustomer(user_id);
+		
+	}
+	public static void bookSeat() throws InterruptedException, SQLException {
+		int sum = 0;
+		Scanner sc = new Scanner(System.in);
+		
+		checkMatches();
+		System.out.println("-------------------------------------------");
+		System.out.println("Which Match Do You Want to Book for?");
+		int m_id = sc.nextInt();
+		
+		//to prevent it from crashing
+		sc.nextLine();
+		//checking if the matchID in the database or not, stupid inputs may dump the whole thing
+		
+		System.out.println("Please Enter Your First Name: ");
+	    String fname = sc.nextLine();
+	    
+	    System.out.println("Please Enter Your Second Name: ");
+	    String sname = sc.nextLine();
+	    
+	    System.out.println("Please Enter Your Address: ");
+	    String add = sc.nextLine();
+	    
+	    System.out.println("Please Enter Your PhoneNumber: ");
+	    String phone = sc.nextLine();
+	    
+	    System.out.println("How Many Seats You're Booking? ");
+	    int nseats = sc.nextInt();
+	    seats = nseats;
+	    
+	    sc.nextLine();
+	    
+	    Customer c = new Customer(fname, sname, phone, add, nseats);
+	    int cust_id = c.addCustomer();
+	    userId = cust_id;
+	    
+	    System.out.println("Your Id is: "+ cust_id);
+
+	    //String [] arr = new String [nseats];
+	    System.out.println("What are the types of the seats you want? ");
+	    System.out.println("Available Types: 1-VIP, 2-SecondTier, 3-ThirdTier, 4-Budget");
+	    
+	    //Thread.sleep(1000);
+	    
+	    
+	    
+	    System.out.println("----------------------------------------------");
+	    Seat s = new Seat();
+	    for(int i=0; i < nseats; i++) {
+	    	//Thread.sleep(1000);
+	    	System.out.println("Choose a Type: ");
+	    	String t = sc.nextLine();
+	    	int s_id = s.reserveSeat(t);
+	    	
+	    	//The most stupid thing in the world, idk why i did it like that, maybe to make the code simple, or i was drunk idk :3
+	    	int p = s.getPrice(s.getSeatType(s_id));
+	    	//System.out.println("The "+ (i+1) + " SeatID is :" + s_id + ", and the price is: " + p);
+	    	sum += p;
+	    	
+	    	s.seatInfo();
+	    	
+	    	//adding to the database
+	    	CustomerMatch k = new CustomerMatch(s_id, m_id, cust_id);
+	    	k.addCustomerMatch();
+	    	
+	    	
+	    	
+	    }
+	    System.out.println("----------------------------------------------");
+	    System.out.println("The Total Price is: " + sum);
+		System.out.println("Adding Info.....");
+		
+	}
+}

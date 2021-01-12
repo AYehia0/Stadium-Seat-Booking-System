@@ -249,14 +249,14 @@ public class InitAll {
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.println("-------------------------------------------");
-		System.out.println("Please Enter your id: ");
+		System.out.print("Please Enter your ID: ");
 		int user_id = sc.nextInt();
 		
 		sc.nextLine();
 		
 		//reg validation
 		if (user_id != userId) {
-			System.out.println("No Access");
+			System.out.println("Nope :3");
 			return;
 		}
 		
@@ -285,40 +285,44 @@ public class InitAll {
 		
 		checkMatches();
 		System.out.println("-------------------------------------------");
-		System.out.println("Which Match Do You Want to Book for?");
+		System.out.print("Which Match Do You Want to Book for? : ");
 		int m_id = sc.nextInt();
+		
+		//check if matchID is valid, maybe someday else.
 		
 		//to prevent it from crashing
 		sc.nextLine();
 		//checking if the matchID in the database or not, stupid inputs may dump the whole thing
 		
-		System.out.println("Please Enter Your First Name: ");
+		System.out.print("Please Enter Your First Name: ");
 	    String fname = sc.nextLine();
 	    
-	    System.out.println("Please Enter Your Second Name: ");
+	    System.out.print("Please Enter Your Second Name: ");
 	    String sname = sc.nextLine();
 	    
-	    System.out.println("Please Enter Your Address: ");
+	    System.out.print("Please Enter Your Address: ");
 	    String add = sc.nextLine();
 	    
-	    System.out.println("Please Enter Your PhoneNumber: ");
+	    System.out.print("Please Enter Your PhoneNumber: ");
 	    String phone = sc.nextLine();
 	    
-	    System.out.println("How Many Seats You're Booking? ");
+	    System.out.print("How Many Seats You're Booking? : ");
 	    int nseats = sc.nextInt();
 	    seats = nseats;
 	    
 	    sc.nextLine();
-	    
+	    System.out.println("----------------------------------------------");
+
 	    Customer c = new Customer(fname, sname, phone, add, nseats);
 	    int cust_id = c.addCustomer();
 	    userId = cust_id;
-	    
-	    System.out.println("Your Id is: "+ cust_id);
+	    System.out.println("----------------------------------------------");
+	    System.out.println("****************Your ID is: "+ cust_id + " ***************");
+	    System.out.println("----------------------------------------------");
 
 	    //String [] arr = new String [nseats];
-	    System.out.println("What are the types of the seats you want? ");
 	    System.out.println("Available Types: 1-VIP, 2-SecondTier, 3-ThirdTier, 4-Budget");
+	    System.out.println("What are the types of the seats you want? ");
 	    
 	    //Thread.sleep(1000);
 	    
@@ -328,7 +332,7 @@ public class InitAll {
 	    Seat s = new Seat();
 	    for(int i=0; i < nseats; i++) {
 	    	//Thread.sleep(1000);
-	    	System.out.println("Choose a Type: ");
+	    	System.out.print("Choose a Type: ");
 	    	String t = sc.nextLine();
 	    	int s_id = s.reserveSeat(t);
 	    	
@@ -343,12 +347,10 @@ public class InitAll {
 	    	CustomerMatch k = new CustomerMatch(s_id, m_id, cust_id);
 	    	k.addCustomerMatch();
 	    	
-	    	
-	    	
 	    }
 	    System.out.println("----------------------------------------------");
 	    System.out.println("The Total Price is: " + sum);
-		System.out.println("Adding Info.....");
-		
+		System.out.println("Adding Info and returning.....");
+		Thread.sleep(1000);
 	}
 }

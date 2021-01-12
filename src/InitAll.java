@@ -115,10 +115,6 @@ public class InitAll {
 		System.out.println("-------------------------------------------"); 
 }
 	
-	public static void checkMatches() throws SQLException {
-		//Match m = new Match();
-		Match.getOnMatches();
-	}
 
 	public static boolean isAdmin() {
 		Scanner sc = new Scanner(System.in);
@@ -240,6 +236,14 @@ public class InitAll {
 		
 		Customer k = new Customer();
 		k.editCustomer(c_id, fname, lname, phone, address, s_num);
+	}
+
+	public static void checkMatches() throws SQLException {
+		//Match m = new Match();
+		System.out.println("------------------MATCHES------------------");
+		System.out.println("-------------------------------------------");
+
+		Match.getOnMatches();
 	}
 	public static void getInfo() throws SQLException {
 		Scanner sc = new Scanner(System.in);

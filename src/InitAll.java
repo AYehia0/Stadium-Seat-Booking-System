@@ -193,6 +193,18 @@ public class InitAll {
 		
 		Match.editMatch(m_id, m_title, m_date, f_team, s_team);
 	}
+	public static void delMatches() throws SQLException {
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("---------------DELETE MATCH---------------");
+		System.out.println("-------------------------------------------");
+
+		System.out.print("Please Enter Match ID: ");
+		int m_id = sc.nextInt();
+		
+		Match.delMatch(m_id);
+		
+	}
 	public static void getInfo() throws SQLException {
 		Scanner sc = new Scanner(System.in);
 		

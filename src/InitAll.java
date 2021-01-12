@@ -144,7 +144,7 @@ public class InitAll {
 
 		CustomerMatch.getAllSeatsCustomer();
 	}
-	
+
 	public static void addMatches() throws SQLException {
 		Scanner sc = new Scanner(System.in);
 		
@@ -168,7 +168,31 @@ public class InitAll {
 		m.setMatchInfo(title, date, time, fteam, steam);
 		m.addMatchToDB();
 	}
+	public static void editMatches() throws SQLException {
+		Scanner sc = new Scanner(System.in);
+	
+		System.out.println("---------------EDIT MATCH---------------");
+		System.out.println("-------------------------------------------");
 
+		System.out.print("Please Enter Match ID: ");
+		int m_id = sc.nextInt();
+		
+		sc.nextLine();
+		
+		System.out.print("Please Enter Match Title: ");
+		String m_title = sc.nextLine();
+		
+		System.out.print("Please Enter The Date: ");
+		String m_date = sc.nextLine();
+		
+		System.out.print("Please Enter First Team: ");
+		String f_team = sc.nextLine();
+
+		System.out.print("Please Enter Second Team: ");
+		String s_team = sc.nextLine();
+		
+		Match.editMatch(m_id, m_title, m_date, f_team, s_team);
+	}
 	public static void getInfo() throws SQLException {
 		Scanner sc = new Scanner(System.in);
 		

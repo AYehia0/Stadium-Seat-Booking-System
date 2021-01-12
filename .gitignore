@@ -36,3 +36,4 @@ stadium/CoolTables.class
 stadium/InitAll.class        
 stadium/Seat.class        
 stadium/Main.class
+db.sqlite

@@ -48,6 +48,8 @@ public class CustomerMatch {
 			System.out.println("Error" + e.getMessage());
 		}
 	}
+
+	//which match a certain customer is reserved to 
 	public static void getMatches(int cust_id) throws SQLException {
 		Connection conn = ConnectDataBase.getConn();
 		Statement stat = ConnectDataBase.getStat();
@@ -93,6 +95,7 @@ public class CustomerMatch {
 
 	}
 	
+	//get all customer info, was supposed to be in customer class, id my bad
 	public static void getCustomer(int cust_id) throws SQLException {
 		Connection conn = ConnectDataBase.getConn();
 		Statement stat = ConnectDataBase.getStat();
@@ -135,6 +138,7 @@ public class CustomerMatch {
 	System.out.println(tableGenerator.generateTable(headersList, rowsList));
 
 	}
+	//get all the customers 
 	public static void getAllCustomer() throws SQLException {
 		Connection conn = ConnectDataBase.getConn();
 		Statement stat = ConnectDataBase.getStat();
@@ -181,6 +185,8 @@ public class CustomerMatch {
 		System.out.println(tableGenerator.generateTable(headersList, rowsList));
 		
 	}
+
+	//get customer's seats type and position
 	public static void getSeatsCustomer(int cust_id) throws SQLException {
 		Connection conn = ConnectDataBase.getConn();
 		Statement stat = ConnectDataBase.getStat();
@@ -228,7 +234,7 @@ public class CustomerMatch {
 		System.out.println(tableGenerator.generateTable(headersList, rowsList));
 		
 	}
-	
+	//more details for matches a certain customer have
 	public static void getMatchesCustomer(int cust_id) throws SQLException {
 		Connection conn = ConnectDataBase.getConn();
 		Statement stat = ConnectDataBase.getStat();

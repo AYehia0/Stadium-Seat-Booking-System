@@ -23,6 +23,7 @@ public class Seat {
 	public String seat_location;
 	
 	
+	//get all the seats
 	public void getSeats() throws SQLException {
 		//getting connection
 		Connection conn = ConnectDataBase.getConn();
@@ -61,7 +62,7 @@ public class Seat {
 
 	}
 	
-
+	// add a seat to the db
 	public int reserveSeat(String s_type) throws SQLException {
 		Connection conn = ConnectDataBase.getConn();
 		conn.setAutoCommit(false);
@@ -105,6 +106,7 @@ public class Seat {
 		this.isTaken = true;
 		return seatId;
 	}
+	//get the seat type
 	public String getSeatType(int s_id) throws SQLException {
 		String s_type = "";
 		Connection conn = ConnectDataBase.getConn();
@@ -142,6 +144,8 @@ public class Seat {
 		}
 		return p;
 	}
+
+	//get all the info related to a seat
 	public void seatInfo() throws SQLException {
 		
 		CoolTables tableGenerator = new CoolTables();

@@ -99,5 +99,5 @@ public class Customer {
 		
 	}
 	//deleting the customer
-
+	//i was suppose to delete a cusomer, but why ?
 }

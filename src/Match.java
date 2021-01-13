@@ -51,6 +51,7 @@ public class Match {
 		}
 		
 	}
+	//get all the matches in the db
 	public static void getOnMatches() throws SQLException {
 		//getting connection
 		Connection conn = ConnectDataBase.getConn();
@@ -88,7 +89,9 @@ public class Match {
     		 System.out.println("An error happened while connecting to the db " + e.getMessage());
     	}
         System.out.println(tableGenerator.generateTable(headersList, rowsList));
-    }
+	}
+	
+	//delete a match
 	public static void delMatch(int match_id) throws SQLException {
 		Connection conn = ConnectDataBase.getConn();
 		conn.setAutoCommit(false);
@@ -106,6 +109,8 @@ public class Match {
 			System.out.println("Error Couldn't delete");
 		}
 	}
+
+	//edit a match
 	public static void editMatch(int m_id ,String m_title, String m_date, String f_team, String s_team ) throws SQLException {
 		// " UPDATE Match 
 		//SET matchTitle='final match', matchDate='1/3/2010'

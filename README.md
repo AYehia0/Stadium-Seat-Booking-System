@@ -37,14 +37,20 @@ taking place in a particular stadium.
 
 
 
+# Notes 
+
+In case of locked database, kill anything that currently uses the database :  $ fuser -k db.sqlite 
+
 # ToDo 
 ###### (probably won't do, busy)
 
 - [ ] Create a table for seat types.
+- [ ] Add more control for the seat table.
 - [ ] Add Prices to the database.
+- [ ] The is a bug, a fatel one, can you find it out ?
 - [ ] Add more flexibility/options to the Booking section. 
 - [ ] Add a GUI.
 - [ ] Inhance the searching security.
-- [ ] Add an admin module to monitor the system and change the database.
-- [ ] Fix the redundancy in code ```(shitty code, i am trying to finish fast)```
+- [X] Add an admin module to monitor the system and change the database.
+- [X] Fix the redundancy in code ```(shitty code, i am trying to finish fast)```
  

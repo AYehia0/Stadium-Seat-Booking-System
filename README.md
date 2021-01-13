@@ -17,6 +17,19 @@ When the user books a seat, he will get a unique seat number.
 This application will require to contain the details of all the matches
 taking place in a particular stadium.
 
+#### Bugs/Bad
+
+To be honest idk, how i made such a thing, it's bad practice everywhere. And it's not finished yet, i will visit it oneday after i gain more knowledge about how to org things together and how softwares are made, for now i will leave it like this...
+
+- If you digged so deep you may find a way to ```lockeddatabase error```
+- I didn't add a way to delete things related to ```Seat``` table, so it will seem confusing.
+- Some of the code isn't DRY
+- The design itself isn't something related to real life aka bad
+
+
+# UML 
+![uml](/pics/UML_class.png) 
+
 
 # Skills before starting
 

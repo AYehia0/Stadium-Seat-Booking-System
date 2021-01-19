@@ -52,7 +52,7 @@ To be honest idk, how i made such a thing, it's bad practice everywhere. And it'
 
 # Notes 
 
-In case of locked database, kill anything that currently uses the database :  $ fuser -k db.sqlite 
+In case of locked database, kill anything that currently uses the database :  ```fuser -k db.sqlite``` 
 
 # ToDo 
 ###### (probably won't do, busy)
